@@ -1,22 +1,18 @@
 "use client"; // ✅ Importante en Next.js 15 (App Router)
 
-import { useState, useEffect } from "react";
-import { getCurrencies, createOrder } from "../utils/api";
-import { useRouter } from "next/navigation"; // ✅ Usa next/navigation
-import "./payment.css"; // Importa el archivo CSS
+"use client";
+import { useState } from "react";
+import { createOrder } from "../utils/api";
+import { useRouter } from "next/navigation";
+import CryptoSelector from "./criptoSelector";
+import "./payment.css";
 
 export default function PaymentForm() {
   const [amount, setAmount] = useState("");
   const [concept, setConcept] = useState("");
   const [currency, setCurrency] = useState("");
-  const [currencies, setCurrencies] = useState([]);
   const router = useRouter();
 
-  useEffect(() => {
-    getCurrencies().then(setCurrencies);
-  }, []);
-
-  // Verifica si todos los campos están completos
   const isFormValid = amount && concept && currency;
 
   const handleSubmit = async (e) => {
@@ -42,18 +38,7 @@ export default function PaymentForm() {
         onChange={(e) => setConcept(e.target.value)}
         required
       />
-      <select
-        value={currency}
-        onChange={(e) => setCurrency(e.target.value)}
-        required
-      >
-        <option value="">Selecciona una criptomoneda</option>
-        {currencies.map((cur) => (
-          <option key={cur.code} value={cur.code}>
-            {cur.name} ({cur.code})
-          </option>
-        ))}
-      </select>
+      <CryptoSelector onSelect={setCurrency} />
       <button type="submit" disabled={!isFormValid}>
         Crear Pago
       </button>
