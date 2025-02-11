@@ -30,24 +30,37 @@ export default function PaymentForm() {
 
   return (
     <form onSubmit={handleSubmit} className="payment-form">
-      <h1>Crear un Pago</h1>
-      <input
-        type="number"
-        placeholder="Monto"
-        value={amount}
-        onChange={(e) => setAmount(e.target.value)}
-        required
-      />
-      <input
-        type="text"
-        placeholder="Concepto"
-        value={concept}
-        onChange={(e) => setConcept(e.target.value)}
-        required
-      />
-      <CryptoSelector onSelect={setCurrency} />
-      <button type="submit" disabled={!isFormValid}>
-        Crear Pago
+      <h1>Crear Pago</h1>
+      <div className="form-group">
+        <label>Importe a pagar</label>
+        <input
+          type="number"
+          placeholder="  Añade importe a pagar"
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
+          required
+        />
+      </div>
+      <div className="form-group">
+        <label>Seleccionar moneda</label>
+        <CryptoSelector
+          onSelect={setCurrency}
+          amount={amount}
+          className="crypto-selector"
+        />
+      </div>
+      <div className="form-group">
+        <label>Concepto</label>
+        <input
+          type="text"
+          placeholder="  Añade descripción del pago"
+          value={concept}
+          onChange={(e) => setConcept(e.target.value)}
+          required
+        />
+      </div>
+      <button type="submit" disabled={!isFormValid} className="submit-button">
+        Continuar
       </button>
     </form>
   );

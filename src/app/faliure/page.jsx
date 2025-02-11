@@ -10,7 +10,7 @@ export default function Failed() {
         Lorem ipsum dolor sit amet consectetur. Laoreet blondit auctor et varius
         dolor elit facilis! enim. Nulla ut ut eu nunc.
       </p>
-      <button onClick={() => (window.location.href = "/crear-pago")}>
+      <button onClick={() => (window.location.href = "/index")}>
         Crear nuevo pago
       </button>
     </div>

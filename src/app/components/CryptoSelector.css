@@ -1,14 +1,14 @@
 .crypto-selector {
+    width: 95%;
+    height: 45px;
     position: relative;
-    width: 100%;
-    max-width: 350px;
     font-family: Arial, sans-serif;
 }
 
 .selector-box {
     background: #fff;
-    padding: 10px 15px;
-    border: 1px solid #ccc;
+    padding: 15px 15px;
+    border: 2px solid #e4e4e4;
     border-radius: 8px;
     cursor: pointer;
     display: flex;
@@ -40,11 +40,12 @@
 }
 
 .search-input {
-    width: 100%;
-    padding: 8px;
+    width: 90%;
+    margin: 0 auto;
     border: none;
     border-bottom: 1px solid #ddd;
     outline: none;
+    font-size: 15px;
 }
 
 .crypto-list {

@@ -1,8 +1,7 @@
 import PaymentForm from "../components/PaymentForm";
-
 export default function Home() {
   return (
-    <div>
+    <div className="container-general-index">
       <PaymentForm />
     </div>
   );
