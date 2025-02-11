@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { getCurrencies, createOrder } from "../utils/api";
 import { useRouter } from "next/navigation"; // ✅ Usa next/navigation
+import "./payment.css"; // Importa el archivo CSS
 
 export default function PaymentForm() {
   const [amount, setAmount] = useState("");
@@ -15,6 +16,9 @@ export default function PaymentForm() {
     getCurrencies().then(setCurrencies);
   }, []);
 
+  // Verifica si todos los campos están completos
+  const isFormValid = amount && concept && currency;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const order = await createOrder(amount, concept, currency);
@@ -22,7 +26,8 @@ export default function PaymentForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="payment-form">
+      <h1>Crear un Pago</h1>
       <input
         type="number"
         placeholder="Monto"
@@ -49,7 +54,9 @@ export default function PaymentForm() {
           </option>
         ))}
       </select>
-      <button type="submit">Crear Pago</button>
+      <button type="submit" disabled={!isFormValid}>
+        Crear Pago
+      </button>
     </form>
   );
 }
