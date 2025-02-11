@@ -1,6 +1,5 @@
-"use client"; // ✅ Importante en Next.js 15 (App Router)
-
 "use client";
+
 import { useState } from "react";
 import { createOrder } from "../utils/api";
 import { useRouter } from "next/navigation";
@@ -17,8 +16,16 @@ export default function PaymentForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const order = await createOrder(amount, concept, currency);
-    router.push(`/payment?id=${order.id}`);
+    try {
+      const order = await createOrder(amount, concept, currency);
+      router.push(`/qr/${order.identifier}`);
+    } catch (error) {
+      console.error(
+        "Error creando el pago:",
+        error.response?.data || error.message
+      );
+      alert("Hubo un error al crear el pago. Revisa la consola.");
+    }
   };
 
   return (

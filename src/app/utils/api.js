@@ -11,11 +11,25 @@ export const getCurrencies = async () => {
 };
 
 export const createOrder = async (amount, concept, currency) => {
+  console.log("Enviando datos:", amount, concept, currency);
+  
+  const payload = {
+    expected_output_amount: parseFloat(amount), // Monto en fiat
+    input_currency: currency, // Criptomoneda seleccionada
+    merchant_urlko: "https://tu-sitio.com/pago-fallido",
+    merchant_urlok: "https://tu-sitio.com/pago-exitoso",
+    merchant_url_standby: "https://tu-sitio.com/espera",
+    notes: concept, // Concepto del pago
+    fiat: "EUR",
+    language: "ES",
+  };
+
   const response = await axios.post(
     `${API_URL}/orders/`,
-    { amount, concept, currency },
+    payload,
     { headers: { "X-Device-Id": DEVICE_ID } }
   );
+
   return response.data;
 };
 
