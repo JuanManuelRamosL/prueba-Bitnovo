@@ -73,30 +73,36 @@ export default function QRPage() {
           <div className={styles.summaryItem}>
             <span className={styles.spanText}>Importe: </span>
             <span className={styles.spanText}>
-              {order.fiat_amount} {order.fiat}
+              <b>
+                {order.fiat_amount} {order.fiat}
+              </b>
             </span>
           </div>
           <div className={styles.summaryItem}>
             <span className={styles.spanText}>Moneda Seleccionada: </span>
-            <span className={styles.spanText}>{order.currency_id}</span>
+            <span className={styles.spanText}>
+              <b>{order.currency_id}</b>
+            </span>
           </div>
           <div className={styles.summaryItemEspecial}>
             <span className={styles.spanText}>Comercio: </span>
             <span className={styles.spanText}>
-              {order.merchant_device || "Comercio no especificado"}
+              <b>{order.merchant_device || "Comercio no especificado"}</b>
             </span>
           </div>
           <div className={styles.summaryItem}>
             <span className={styles.spanText}>Fecha: </span>
             <span className={styles.spanText}>
-              {new Date(order.created_at).toLocaleDateString()}{" "}
-              {new Date(order.created_at).toLocaleTimeString()}
+              <b>
+                {new Date(order.created_at).toLocaleDateString()}{" "}
+                {new Date(order.created_at).toLocaleTimeString()}
+              </b>
             </span>
           </div>
           <div className={styles.summaryItem}>
             <span className={styles.spanText}>Concepto: </span>
             <span className={styles.spanText}>
-              {order.notes || "Sin concepto"}
+              <b>{order.notes || "Sin concepto"}</b>
             </span>
           </div>
         </div>
