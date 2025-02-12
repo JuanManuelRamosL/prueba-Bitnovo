@@ -28,7 +28,7 @@ export default function Success() {
         Lorem ipsum dolor sit amet consectetur. Looreet blondit auctor et varius
         dolor elit facilisi enim. Nulla ut ut eu nunc.
       </p>
-      <button onClick={() => (window.location.href = "/index")}>
+      <button onClick={() => (window.location.href = "/")}>
         Crear nuevo pago
       </button>
     </div>
